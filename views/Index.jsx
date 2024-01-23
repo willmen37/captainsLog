@@ -1,6 +1,13 @@
 import React from 'react'
 
 const Index = () => {
+    // {logs.map((log, i)=>{
+    //     <li key={i}>
+    //     <a href={`/show/${log._id}`}>{log.name}</a>
+    //     </li>
+
+
+    //   })}  
   return (
     <div>
     <nav>
@@ -9,13 +16,7 @@ const Index = () => {
     <h1>Index Page</h1>
     
     <ul>
-      {logs.map((log, i)=>{
-        <li key={i}>
-        {log.title}
-        </li>
-
-
-      })}  
+     
     </ul>
     
     </div>

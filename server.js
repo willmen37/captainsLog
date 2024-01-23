@@ -26,6 +26,11 @@ app.get("/index" ,(req, res)=>{
 })
 
 
+app.get("/show" ,(req, res)=>{
+    res.render("show")
+})
+
+
 
 app.post('/create', (req, res) => {
     console.log(req.body)
@@ -36,7 +41,7 @@ app.post('/create', (req, res) => {
     }
     newLog.push(req.body)
     console.log(newLog, "after")
-    // res.redirect("/show")
+    res.redirect("/show")
 })
 
 app.listen(PORT, (req,res)=>{
