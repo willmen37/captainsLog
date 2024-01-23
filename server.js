@@ -22,25 +22,27 @@ app.get("/new" ,(req, res)=>{
 })
 
 app.get("/index" ,(req, res)=>{
-    res.render("index")
+    res.render("index",  {logs: newLog[req.params.index]})
+    // console.log(logs, "INDEXSERVER")
 })
 
 
 app.get("/show" ,(req, res)=>{
-    res.render("show")
+    res.render("show", {logs: newLog[req.params.index]})
+    console.log(logs, "SERVERSHOW")
 })
 
 
 
 app.post('/create', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     if (req.body.shipIsBroken === 'on') {
         req.body.shipIsBroken = true
     } else {
         req.body.shipIsBroken = false
     }
     newLog.push(req.body)
-    console.log(newLog, "after")
+    // console.log(newLog, "after")
     res.redirect("/show")
 })
 
