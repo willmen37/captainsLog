@@ -1,12 +1,15 @@
 const express = require("express");
+const newLog = require("./models/newlog")
 const app = express();
 const PORT = 3000;
+
+
 
 const jsxEngine = require("jsx-view-engine")
 app.set("view engine", "jsx")
 app.engine("jsx", jsxEngine())
 
-// body-parser(POST request fromat)
+// body-parser(POST request format)
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -18,17 +21,22 @@ app.get("/new" ,(req, res)=>{
     res.render("New")
 })
 
+app.get("/index" ,(req, res)=>{
+    res.render("index")
+})
+
 
 
 app.post('/create', (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     if (req.body.shipIsBroken === 'on') {
         req.body.shipIsBroken = true
     } else {
         req.body.shipIsBroken = false
     }
-    console.log(req.body, "after")
-    res.send("data received")
+    newLog.push(req.body)
+    console.log(newLog, "after")
+    // res.redirect("/show")
 })
 
 app.listen(PORT, (req,res)=>{
